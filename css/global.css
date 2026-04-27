@@ -21,6 +21,7 @@ body {
     height: 130px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    flex-shrink: 0;
 }
 
 .live-clock-container {
@@ -29,6 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: default;
 }
 
 #current-time {
@@ -46,6 +48,7 @@ body {
 .page-title {
     font-size: 45px;
     font-weight: 700;
+    cursor: default;
 }
 
 .user-account-container {
@@ -55,7 +58,6 @@ body {
     justify-content: end;
     align-items: center;
     position: relative;
-    cursor: pointer;
 }
 
 .user-display-wrapper {
@@ -65,6 +67,7 @@ body {
     justify-content: end;
     align-items: center;
     gap: 15px;
+    cursor: pointer;
 }
 
 .username-display {
@@ -106,7 +109,7 @@ body {
     background-color: color-mix(in srgb, var(--red), black 20%);
 }
 
-.user-account-container.open .user-dropdown-menu {
+.user-display-wrapper.open .user-dropdown-menu {
     display: block;
 }
 
@@ -115,6 +118,7 @@ body {
     grid-template-columns: 1fr 14% 23%;
     height: 75px;
     background-color: var(--accent-color);
+    flex-shrink: 0;
 }
 
 .nav-item-container {
@@ -283,12 +287,12 @@ body {
 }
 
 .search-container::after {
-    content: '\2315'; /* Unicode search icon */
+    content: '\2315';
     position: absolute;
-    right: 30px;   /* Adjusted to account for your 25px container padding */
+    right: 30px;
     top: 50%;
     transform: translateY(-58%) scaleX(-1);
     font-size: 27px;
-    pointer-events: none; /* So you can click "through" the icon to type */
+    pointer-events: none;
     color: var(--bg-body);
 }

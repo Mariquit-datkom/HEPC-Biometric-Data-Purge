@@ -21,19 +21,19 @@ switch($currentPage) {
     <div class="page-title-container">
         <p class="page-title"><?php echo $pageTitle ?></p>
     </div>
-    <div class="user-account-container" id="userDropdownContainer">
-        <div class="user-display-wrapper">
+    <div class="user-account-container">
+        <div class="user-display-wrapper" id="userDropdownContainer">
             <p class="username-display"><?php echo $_SESSION['username'] ?></p>
             <img src="assets/img/userIcon.png" class="user-icon" alt="user profile icon">
-        </div>
 
-        <ul class="user-dropdown-menu">
-            <li>
-                <a href="logout.php">
-                    <i class="fa-solid fa-right-from-bracket"></i> Sign Out
-                </a>
-            </li>
-        </ul>
+            <ul class="user-dropdown-menu">
+                <li>
+                    <a href="logout.php">
+                        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 

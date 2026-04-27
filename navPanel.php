@@ -35,3 +35,4 @@
 </div>
 
 <script src="js/sortDropdown.js"></script>
+<script src="js/search.js"></script>

@@ -13,9 +13,22 @@
         $stmt->execute(['username' => $username]);
         $user = $stmt->fetch();
 
-        // Checks if password is correct
-        if ($user && password_verify($password, $user['password'])) {
-
+        if (empty($_POST['username']) or empty($_POST['password'])) {
+            $_SESSION['error'] = "<p style='color: red; font-size: 13px; font-family: Arial;'> Fill up all fields with necessary information. </p>";
+            header("Location: logIn.php");
+            exit();
+            
+        } else if (empty($user) || !password_verify($password, $user['password'])) {            
+            $_SESSION['error'] = "<p style='color: red; font-size: 13px; font-family: Arial;'> Invalid username or password. Please try again. </p>";
+            header("Location: logIn.php");
+            exit();
+            
+        } else if ($user['status'] !== 'offline') {
+            $_SESSION['error'] = "<p style='color: red; font-size: 13px; font-family: Arial;'> User is still logged in another device. Logout and try again. </p>";
+            header("Location: logIn.php");
+            exit();
+            
+        } else {
             $_SESSION['username'] = $user['username'];
             $now = time();
 
@@ -24,11 +37,6 @@
             $stmt->execute(['ping' => $now, 'status' => 'online','username' => $username]);
 
             header("Location: dashboard.php");
-            exit();
-            
-        } else {
-            $_SESSION['error'] = "<p style='color: red; font-size: 13px; font-family: Arial;'> Invalid username or password. Please try again. </p>";
-            header("Location: logIn.php");
             exit();
         }
     }
