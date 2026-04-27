@@ -1,0 +1,77 @@
+.dashboard-main-container {
+    flex-grow: 1;
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    width: 100%;
+    padding-right: 20px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(80px, auto);
+    gap: 25px;
+    transition: opacity 0.35s ease-in-out;
+    opacity: 1;
+}
+
+.dashboard-content::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.dashboard-content::-webkit-scrollbar-track { 
+    background: transparent; 
+}
+
+.dashboard-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+.dashboard-item {
+    background-color: color-mix(in srgb, var(--bg-body), white 4%);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 3px transparent solid;
+    transition: border-color 0.5s ease;
+}
+
+.dashboard-item:hover {
+    border-color: var(--accent-color);
+}
+
+.dashboard-item.due {
+    background-color: var(--green);
+}
+
+.dashboard-item.overdue {
+    background-color: var(--orange);
+}
+
+.dashboard-item.critical {
+    background-color: var(--red);
+}
+
+.main-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.device-name {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.log-cutoff {
+    font-weight: 600;
+}

@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Alphazet';
+    src: url('../assets/fonts/Alphazet/Alphazet-Light.woff2') format('woff2'),
+         url('../assets/fonts/Alphazet/Alphazet-Light.woff') format('woff'),
+         url('../assets/fonts/Alphazet/Alphazet-Light.otf') format('opentype'),
+         url('../assets/fonts/Alphazet/Alphazet-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alphazet';
+    src: url('../assets/fonts/Alphazet/Alphazet-SemiBold.woff2') format('woff2'),
+         url('../assets/fonts/Alphazet/Alphazet-SemiBold.woff') format('woff'),
+         url('../assets/fonts/Alphazet/Alphazet-SemiBold.otf') format('opentype'),
+         url('../assets/fonts/Alphazet/Alphazet-SemiBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --debug-border: 1px red solid !important;
+
+    --font-main: 'Alphazet', sans-serif;
+
+    --bg-body: #000;
+
+    --text-color: #ededed;
+
+    --login-input-bg: #262626;
+
+    --accent-color: #85B8FF;
+
+    --green: #0f8e01;
+
+    --orange: #d56401;
+
+    --red: #d91602;
+}
