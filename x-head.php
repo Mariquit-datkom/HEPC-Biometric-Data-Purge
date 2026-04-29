@@ -3,6 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once 'encryptionAndSaving/secureFileManager.php';
 session_start();
 
+date_default_timezone_set('Asia/Manila');
+
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__);

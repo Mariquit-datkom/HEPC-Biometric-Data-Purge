@@ -96,3 +96,134 @@
 .log-cutoff {
     font-weight: 600;
 }
+
+.modal-overlay {
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    width: 700px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 1fr min-content;
+    animation: slideDown 0.4s ease;
+    background-color: var(--bg-body);
+    border: 3px var(--accent-color) solid;
+    border-radius: 25px;
+}
+
+.modal-header, .modal-cutoff-details, .modal-btn-container { 
+    width: 100%; 
+    padding: 0 20px;
+}
+
+.modal-header {
+    display: grid;
+    grid-template-columns: 1fr 45px;
+    background-color: var(--accent-color);
+    color: var(--bg-body);
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+}
+
+.modal-device-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+}
+
+#modal-device-name {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+#modal-device-ip {
+    font-size: 18px;
+}
+
+.back-btn-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.back-btn {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+    } to {
+        transform: translateY(0px);
+    }
+}
+
+.modal-cutoff-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+}
+
+.modal-cutoff-details > div:first-child {
+    border-right: 2px var(--accent-color) solid;
+}
+
+.modal-cutoff-details > * {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 30px;
+}
+
+.modal-date {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.modal-btn-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+}
+
+.modal-btn {
+    padding: 8px 13px;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#confirm-log-removal-btn {
+    background-color: var(--red);
+}
+
+#confirm-log-removal-btn:hover {
+    background-color: color-mix(in srgb, var(--red), black 15%);
+}
+
+#cancel-btn {
+    background-color: color-mix(in srgb, var(--bg-body), white 15%);
+}
+
+#cancel-btn:hover {
+    background-color: color-mix(in srgb, var(--bg-body), white 8%);
+}

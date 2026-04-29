@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return dateA - dateB;
             }
 
-            if (criteria === 'byIndex') {
-                return parseInt(a.dataset.index) - parseInt(b.dataset.index);
-            }
-
             if (criteria === 'alphabetical') {
                 const nameA = a.querySelector('.device-name').innerText.toLowerCase();
                 const nameB = b.querySelector('.device-name').innerText.toLowerCase();

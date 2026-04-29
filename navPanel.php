@@ -24,7 +24,6 @@
         <div class="selected-display">By Cutoff</div>
         <ul class="options-list">
             <li data-value="byCutoff">By Cutoff</li>
-            <li data-value="byIndex">By Index</li>
             <li data-value="alphabetical">Alphabetical</li>
         </ul>
         <input type="hidden" name="sortby" id="sortByValue" value="default">
