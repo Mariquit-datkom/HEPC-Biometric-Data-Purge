@@ -1,4 +1,5 @@
 libs/
 vendor/
+assets/docs/history/
 composer.json
 composer.lock
