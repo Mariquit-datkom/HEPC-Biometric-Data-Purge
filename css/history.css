@@ -1,0 +1,67 @@
+.history-main-container {
+    flex-grow: 1;
+    padding: 0 40px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.history-content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.device-list-container, .date-list-container {
+    height: 100%;
+}
+
+.device-list-container {
+    border-top-left-radius: 30px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: color-mix(in srgb, var(--bg-body), white 4%);
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.device-list-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.device-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.device-list-container::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--bg-body), white 30%);
+    border-radius: 10px;
+}
+
+.device {
+    min-height: 45px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-left: 4px transparent solid;
+    transition: all 0.3s ease;
+}
+
+.device:hover {
+    border-color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+}
+
+.date-list-container {
+    margin-left: 30px;
+    border: 3px var(--accent-color) solid;
+    border-top-right-radius: 30px;
+}
