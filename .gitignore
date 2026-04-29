@@ -1,5 +1,6 @@
 libs/
 vendor/
 assets/docs/history/
+assets/docs/devices.dat
 composer.json
 composer.lock
