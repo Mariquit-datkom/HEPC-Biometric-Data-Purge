@@ -1,13 +1,17 @@
 function calculateNewCutoffDate() {
     const today = new Date();
+    const currentDay = today.getDate();
 
     let year = today.getFullYear();
-    let month = today.getMonth() + 1;
+    let month = today.getMonth();
 
-    if (month > 11) {
-        month = 0;
-        year++;
-    }
+    if (currentDay >= 20) {
+        month++;
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+    }        
     
     const newCutoffDate = new Date(year, month, 20);
 
