@@ -38,11 +38,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <?php endforeach; ?>
             </div>
             <div class="date-list-container">
-                
+                <p class="history-instructions">Click device name from list to check history.</p>
+                <div class="history-container"></div>
             </div>
         </div>
     </div>
     
     <script src="js/userHeartbeat.js"></script>
+    <script src="js/historyHandler.js"></script>
 </body>
 </html>
