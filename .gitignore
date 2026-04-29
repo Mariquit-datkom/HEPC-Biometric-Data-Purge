@@ -1,6 +1,11 @@
-libs/
-vendor/
-assets/docs/history/
+# Dependencies
+/libs/
+/vendor/
+
+# Documentation and Data
 assets/docs/devices.dat
+assets/docs/history/
+
+# Composer
 composer.json
 composer.lock
