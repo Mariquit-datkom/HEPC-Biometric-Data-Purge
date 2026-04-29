@@ -95,8 +95,8 @@ function getLastRemovalDate(string $name, string $ip) {
         </div>
     </div>
 
-    <script src="js/cutOffChecker.js"></script>
     <script src="js/userHeartbeat.js"></script>
+    <script src="js/cutOffChecker.js"></script>
     <script src="js/dashboardModal.js"></script>
     <script src="js/updateCutoffDate.js"></script>
 </body>
