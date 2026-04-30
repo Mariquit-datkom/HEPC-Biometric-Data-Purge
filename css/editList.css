@@ -1,0 +1,78 @@
+.edit-list-main-container {
+    display: flex;
+    height: 100%;
+    padding: 0 40px;
+    padding-top: 30px;
+    overflow: hidden;
+}
+
+.edit-list-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px;
+    padding-bottom: 20px;
+}
+
+.form-header-container {
+    display: flex;
+}
+
+.form-header {
+    font-size: 20px;
+}
+
+.form-btn {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bg-body);
+    background-color: var(--text-color);
+    cursor: pointer;
+}
+
+.form-btn:hover {
+    background-color: color-mix(in srgb, var(--text-color), black 15%);
+}
+
+.edit-list-text-area {
+    font-family: monospace;
+    font-size: 15px;
+    color: var(--text-color);
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 2px var(--accent-color) solid;
+    border-bottom: none;
+    padding: 15px;
+    background-color: var(--bg-body);
+    resize: none;
+    line-height: 1.5;
+}
+
+.edit-list-text-area:focus {    
+    border-color: var(--text-color);
+}
+
+.edit-list-text-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.edit-list-text-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.edit-list-text-area::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--bg-body), white 50%);
+    border-radius: 10px;
+}
