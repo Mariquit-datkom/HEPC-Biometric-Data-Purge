@@ -31,27 +31,7 @@ if (isset($_SESSION['username'])) {
         error_log("Heartbeat Check Error: " . $e->getMessage());
     }
 } else {
-    $rowCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
-    
-    for ($i = 1; $i <= $rowCount ; $i++) {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE user_id = :user_id");
-        $stmt->execute(['user_id' => $i]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user) {
-            $username = $user['username'];
-            $diff = $now - $user['ping'];
-            $lastSavedPing = $user['ping'];
-
-            if ($diff === null || $diff > 30) {
-                $sql = "UPDATE users SET ping = :ping, status = :status WHERE username = :username";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['ping' => '0', 'status' => 'offline' ,'username' => $username]);
-
-                session_unset();
-                continue;
-            }
-        }
-    }
+    $pdo->prepare("UPDATE users SET status = 'offline', ping = 0 WHERE ping < :threshold")
+    ->execute(['threshold' => time() - 30]);
 }
 ?>
