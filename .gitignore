@@ -3,8 +3,7 @@
 /vendor/
 
 # Documentation and Data
-assets/docs/devices.dat
-assets/docs/history/
+assets/docs/
 
 # Composer
 composer.json
