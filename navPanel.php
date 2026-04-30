@@ -1,6 +1,8 @@
 <div class="nav-panel-container">
     <div class="nav-item-container">
         <?php
+        $currentPage = basename($_SERVER['PHP_SELF']);
+        
         $navItems = [
             'dashboard.php' => ['text' => 'Dashboard'],
             'history.php' => ['text' => 'History'],

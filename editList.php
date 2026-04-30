@@ -1,7 +1,5 @@
 <?php 
 require_once 'x-head.php';
-
-$currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
