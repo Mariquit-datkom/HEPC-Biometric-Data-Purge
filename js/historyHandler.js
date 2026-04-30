@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             instructions.style.display = 'none';
             historyContainer.style.display = 'block';
-            historyContainer.textContent = 'Loading history...';
+            document.body.style.cursor = 'wait';
 
             const name = device.getAttribute('data-name');
             const ip = device.getAttribute('data-ip');
@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 historyContainer.innerHTML = 'Error loading history.';
             }
+            
+            document.body.style.cursor = 'default';
         });
     });
 });
