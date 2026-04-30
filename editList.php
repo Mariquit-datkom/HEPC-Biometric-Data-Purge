@@ -4,18 +4,30 @@ require_once 'userHeartbeatChecker.php';
 
 $currentPage = basename($_SERVER['PHP_SELF']);
 
+if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+$rawList = $storage->readAndDecrypt('assets/docs/devices.dat');
+$safeList = htmlspecialchars(trim($rawList), ENT_QUOTES, 'UTF-8');
+
 $formMsg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
     $newContent = trim($_POST['content']);
     $filePath = 'assets/docs/devices.dat';
-    $saveStatus = $storage->encryptAndSave($newContent, $filePath);
 
-    if ($saveStatus !== false) {        
-        $formMsg = "<p style='color: #22c55e;'>File successfully saved. </p>";
-        unset($_SESSION['device_list']);
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $formMsg = "<p style='color: #ef4444;'>Security error: Invalid request source.</p>";
+    } else if (empty($newContent)) {
+        $formMsg = "<p style='color: #ef4444;'>Error: You cannot save an empty list.</p>";  
     } else {
-        $formMsg = "<p style='color: #ef4444;'>Failed to save changes. Check file permissions. </p>";
+        $saveStatus = $storage->encryptAndSave($newContent, $filePath);
+        if ($saveStatus === false) {       
+            $formMsg = "<p style='color: #ef4444;'>Failed to save changes. Check file permissions. </p>"; 
+        } else {
+            $formMsg = "<p style='color: #22c55e;'>File successfully saved. </p>";
+            unset($_SESSION['device_list']);
+            unset($_SESSION['csrf_token']);
+        }      
     }
 }
 ?>
@@ -35,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
     
     <div class="edit-list-main-container">
         <form method="POST" class="edit-list-form">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             <div class="top-container">
                 <div class="form-header-container">
                     <p class="form-header">Editing devices.dat:</p>
@@ -46,10 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
                     <button type="submit" class="form-btn">Save Changes</button>
                 </div>
             </div>
-            <textarea name="content" class="edit-list-text-area"><?php 
-                $rawList = $storage->readAndDecrypt('assets/docs/devices.dat');
-                echo htmlspecialchars(trim($rawList));
-            ?></textarea>
+            <textarea name="content" class="edit-list-text-area" spellcheck="false"><?php echo $safeList; ?></textarea>
         </form>
     </div>
 
