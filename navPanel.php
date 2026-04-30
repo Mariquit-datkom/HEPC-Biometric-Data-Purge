@@ -20,6 +20,7 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <?php if ($currentPage === 'dashboard.php'): ?>
     <div class="sort-container" id="sortContainer">
         <div class="selected-display">By Cutoff</div>
         <ul class="options-list">
@@ -31,6 +32,7 @@
     <div class="search-container">
         <input type="text" name="search" id="search" class="search-bar" placeholder="Search">
     </div>
+    <?php endif; ?>
 </div>
 
 <script src="js/sortDropdown.js"></script>
