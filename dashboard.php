@@ -10,6 +10,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+$currentPage = basename($_SERVER['PHP_SELF']);
+
 function getLastRemovalDate(string $name, string $ip) {
     $safeName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $name);
     $safeIp = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $ip);

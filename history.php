@@ -9,6 +9,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.php?reason=invalid_session");
     exit();
 }
+
+$currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
