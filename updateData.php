@@ -43,7 +43,7 @@ foreach ($devicesList as $d) {
     $stringBuffer .= $d['ip'] . " - " . $d['name'] . " - " . $d['cutoff'] . "\n";
 }
 
-$saveStatus = $storage->encryptAndSave(trim($stringBuffer), 'assets/docs/devices.dat');
+$saveStatus = $data['storage']->encryptAndSave(trim($stringBuffer), 'assets/docs/devices.dat');
 
 if ($saveStatus === false) {
     echo json_encode(['success' => false, 'message' => 'Failed to write to file.']);

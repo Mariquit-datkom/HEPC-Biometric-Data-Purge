@@ -1,41 +1,10 @@
 <?php 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once 'encryptionAndSaving/secureFileManager.php';
 session_start();
-
 date_default_timezone_set('Asia/Manila');
 
-use Dotenv\Dotenv;
+$data = require 'devicesInit.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-$storage = new SecureFileManager($_ENV['ENCRYPTION_KEY']);
-
-if (!isset($_SESSION['device_list'])) {
-    $rawList = $storage->readAndDecrypt('assets/docs/devices.dat');
-
-    $lines = explode("\n", trim($rawList));
-    $devicesArray = [];
-
-    foreach ($lines as $line) {
-        $parts = explode(" - ", $line, 3);        
-        if (count($parts) === 3) {
-            $devicesArray[] = [
-                'ip' => trim($parts[0]),
-                'name' => trim($parts[1]),
-                'cutoff' => trim($parts[2])
-            ];
-        }
-    }
-
-    usort($devicesArray, function($a, $b) {
-        return strtotime($a['cutoff']) - strtotime($b['cutoff']);
-    });
-
-    $_SESSION['device_list'] = $devicesArray;
-} 
-
+if (!isset($_SESSION['device_list'])) $_SESSION['device_list'] = $data['devices'];
 $devices = $_SESSION['device_list'];
 ?>
 

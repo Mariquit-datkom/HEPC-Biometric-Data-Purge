@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
     } else if (empty($newContent)) {
         $formMsg = "<p style='color: #ef4444;'>Error: You cannot save an empty list.</p>";  
     } else {
-        $saveStatus = $storage->encryptAndSave($newContent, $filePath);
+        $saveStatus = $data['storage']->encryptAndSave($newContent, $filePath);
         if ($saveStatus === false) {       
             $formMsg = "<p style='color: #ef4444;'>Failed to save changes. Check file permissions. </p>"; 
         } else {
