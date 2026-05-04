@@ -57,9 +57,10 @@ INSERT IGNORE INTO `users` (`user_id`, `username`, `password`, `ping`, `status`)
 CREATE TABLE IF NOT EXISTS `user_subscriptions` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int(11) NOT NULL,
-  `endpoint` text NOT NULL,
+  `endpoint` varchar(500) NOT NULL,
   `p256dh` varchar(255) NOT NULL,
   `auth` varchar(255) NOT NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `unique_endpoint` (`endpoint`),
   CONSTRAINT `fk_user_push` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
