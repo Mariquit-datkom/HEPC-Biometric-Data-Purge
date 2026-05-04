@@ -23,6 +23,7 @@ if (isset($_SESSION['username'])) {
 
                 session_unset();
                 session_destroy();
+                echo "<script> sessionStorage.clear(); </script>";
                 header("Location: login.php?reason=timeout");
                 exit();
             }

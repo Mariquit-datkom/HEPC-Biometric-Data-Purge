@@ -2,6 +2,7 @@ function runUserHeartbeat() {
     fetch('userPing.php')
         .then(response => {
             if (response.status === 401) {
+                sessionStorage.clear();
                 window.location.href = 'login.php?reason=expired';
             }
         })

@@ -39,9 +39,11 @@ function getLastRemovalDate(string $name, string $ip) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/loading.css">
     <title>Dashboard - Biometric Data Purge</title>
 </head>
 <body>
+    <?php include 'loading.php' ?>
     <?php include 'header.php' ?>
     <?php include 'navPanel.php' ?>
     

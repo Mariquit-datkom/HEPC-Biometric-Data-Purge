@@ -1,0 +1,45 @@
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-body); /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Stay above everything */
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.loader-wrapper {
+    text-align: center;
+}
+
+.spinner {
+    width: 70px;
+    height: 70px;
+    border: 3px solid rgba(133, 184, 255, 0.1); /* Faint accent */
+    border-top: 3px solid var(--accent-color); /* Bright accent */
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    margin: 0 auto 20px;
+}
+
+.loader-text {
+    font-family: var(--font-main);
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
