@@ -101,5 +101,11 @@ function getLastRemovalDate(string $name, string $ip) {
     <script src="js/cutOffChecker.js"></script>
     <script src="js/dashboardModal.js"></script>
     <script src="js/updateCutoffDate.js"></script>
+    <script src="js/pushInit.js"></script>
+
+    <script>
+        const vapidKey = "<?php echo $_ENV['VAPID_PUBLIC']; ?>";
+        initPushNotifications(vapidKey);
+    </script>
 </body>
 </html>

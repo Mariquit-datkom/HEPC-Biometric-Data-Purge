@@ -29,6 +29,7 @@
             exit();
             
         } else {
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
             $now = time();
 

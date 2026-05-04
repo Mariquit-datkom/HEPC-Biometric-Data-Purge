@@ -8,3 +8,6 @@ assets/docs/
 # Composer
 composer.json
 composer.lock
+
+# Test Files
+test-notify.php
