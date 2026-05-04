@@ -6,7 +6,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-$rawList = $storage->readAndDecrypt('assets/docs/devices.dat');
+$rawList = $data['storage']->readAndDecrypt('assets/docs/devices.dat');
 $safeList = htmlspecialchars(trim($rawList), ENT_QUOTES, 'UTF-8');
 
 $formMsg = '';
@@ -25,8 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
             $formMsg = "<p style='color: #ef4444;'>Failed to save changes. Check file permissions. </p>"; 
         } else {
             $formMsg = "<p style='color: #22c55e;'>File successfully saved. </p>";
+            $rawList = $newContent;
+            $safeList = htmlspecialchars(trim($rawList), ENT_QUOTES, 'UTF-8');
             unset($_SESSION['device_list']);
-            unset($_SESSION['csrf_token']);
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }      
     }
 }
@@ -37,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/editList.css">
     <title>Edit Devices - Biometric Data Purge</title>
 </head>
