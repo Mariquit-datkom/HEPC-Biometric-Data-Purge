@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/editList.css">
+    <link rel="stylesheet" href="css/editList.css?v=<?php echo filemtime('css/editList.css'); ?>">
     <title>Edit Devices - Biometric Data Purge</title>
 </head>
 <body>

@@ -11,8 +11,8 @@ header("Pragma: no-cache");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/matrix.css">
+    <link rel="stylesheet" href="css/login.css?v=<?php echo filemtime('css/login.css'); ?>">
+    <link rel="stylesheet" href="css/matrix.css?v=<?php echo filemtime('css/matrix.css'); ?>">
     <title>Welcome - Biometric Data Purge</title>
 </head>
 <body>
