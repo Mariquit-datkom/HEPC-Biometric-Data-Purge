@@ -11,3 +11,6 @@ composer.lock
 
 # Test Files
 test-notify.php
+
+# Env File
+.env
