@@ -1,6 +1,9 @@
 <?php
 require_once 'dbConfig.php';
-if (session_status() === PHP_SESSION_NONE) session_start();
+if (session_status() === PHP_SESSION_NONE) {    
+    session_name("BIOMETRIC_DATA_PURGE_SESSION");
+    session_start();
+}
 
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];

@@ -1,4 +1,5 @@
 <?php 
+session_name("BIOMETRIC_DATA_PURGE_SESSION");
 session_start();
 date_default_timezone_set('Asia/Manila');
 

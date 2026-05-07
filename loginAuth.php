@@ -1,7 +1,6 @@
 <?php
-
+    require_once 'x-head.php';
     require_once 'dbConfig.php'; // db config
-    session_start(); // session fetch
 
     // Form Submission Authentication
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {

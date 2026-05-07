@@ -1,6 +1,9 @@
 <?php
 require_once 'dbConfig.php'; 
-session_start(); 
+if (session_status() === PHP_SESSION_NONE) {    
+    session_name("BIOMETRIC_DATA_PURGE_SESSION");
+    session_start();
+}
 
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
