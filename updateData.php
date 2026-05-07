@@ -54,12 +54,15 @@ if ($saveStatus === false) {
             mkdir($historyDir, 0755, true);
         }
 
-        $safeFileName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $targetName) . "_(" . preg_replace('/[^a-zA-Z0-9_\-]/', '_', $deviceIp) . ")";
+        $deviceName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $targetName);
+        $safeDeviceIp = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $deviceIp);
+
+        $safeFileName = $deviceName . "_(" . $safeDeviceIp . ")";
         $historyFile = $historyDir . $safeFileName . ".txt";
 
         $timestamp = date("Y-m-d h:i A");
         $user = $_SESSION['username'] ?? 'Admin';
-        $newEntry = "[$timestamp] Logs removal confirmed by $user";
+        $newEntry = "[$timestamp] Logs removal for $safeDeviceIp confirmed by $user";
 
         if (file_exists($historyFile)) {
             $existingContent = file_get_contents($historyFile);
