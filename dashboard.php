@@ -54,12 +54,12 @@ function getLastRemovalDate(string $name, string $ip) {
             ?>
             <div class="dashboard-item content-item"
             data-index="<?php echo $index; ?>"
-            data-name="<?php echo trim(strtolower($item['name'])) ?>"
+            data-name="<?php echo trim(strtolower(str_replace(':', ' ', $item['name']))) ?>"
             data-ip="<?php echo trim(strtolower($item['ip'])) ?>"
             data-cutoff="<?php echo trim(strtolower($item['cutoff'])) ?>"
             data-last-removal-date="<?php echo $lastRemovalDate ?>">
                 <span class="main-item">
-                    <span class="device-name"><?php echo $item['name'] ?></span>
+                    <span class="device-name"><?php echo strtolower(str_replace(':', ' ', $item['name'])) ?></span>
                     <span class="device-ip">(<?php echo $item['ip'] ?>)</span>
                     <span class="log-cutoff"><?php echo "Cutoff: " . $item['cutoff'] ?></span>
                 </span>
