@@ -19,7 +19,7 @@ $devicesList = $_SESSION['device_list'] ?? [];
 $found = false;
 
 foreach ($devicesList as &$device) {
-    if (trim(strtolower($device['name'])) === trim(strtolower($targetName))) {
+    if (trim(strtolower($device['name'])) === trim(strtolower(str_replace(' ', ':', $targetName)))) {
         $deviceIp = $device['ip'];
         $device['cutoff'] = $newCutoff;
         $found = true;
@@ -56,13 +56,14 @@ if ($saveStatus === false) {
 
         $deviceName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $targetName);
         $safeDeviceIp = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $deviceIp);
+        $ipForLogs = str_replace('_', '.', $safeDeviceIp);
 
         $safeFileName = $deviceName . "_(" . $safeDeviceIp . ")";
         $historyFile = $historyDir . $safeFileName . ".txt";
 
         $timestamp = date("Y-m-d h:i A");
         $user = $_SESSION['username'] ?? 'Admin';
-        $newEntry = "[$timestamp] Logs removal for $safeDeviceIp confirmed by $user";
+        $newEntry = "[$timestamp] Logs removal for $ipForLogs confirmed by $user";
 
         if (file_exists($historyFile)) {
             $existingContent = file_get_contents($historyFile);
