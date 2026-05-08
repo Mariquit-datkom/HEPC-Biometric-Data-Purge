@@ -32,8 +32,7 @@
     <div class="search-container">
         <input type="text" name="search" id="search" class="search-bar" placeholder="Search">
     </div>
+    <script src="js/sortDropdown.js"></script>
+    <script src="js/search.js"></script>
     <?php endif; ?>
 </div>
-
-<script src="js/sortDropdown.js"></script>
-<script src="js/search.js"></script>
