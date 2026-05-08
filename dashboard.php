@@ -59,7 +59,7 @@ function getLastRemovalDate(string $name, string $ip) {
             data-cutoff="<?php echo trim(strtolower($item['cutoff'])) ?>"
             data-last-removal-date="<?php echo $lastRemovalDate ?>">
                 <span class="main-item">
-                    <span class="device-name"><?php echo strtolower(str_replace(':', ' ', $item['name'])) ?></span>
+                    <span class="device-name"><?php echo str_replace(':', ' ', $item['name']) ?></span>
                     <span class="device-ip">(<?php echo $item['ip'] ?>)</span>
                     <span class="log-cutoff"><?php echo "Cutoff: " . $item['cutoff'] ?></span>
                 </span>
