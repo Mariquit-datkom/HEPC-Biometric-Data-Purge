@@ -1,17 +1,52 @@
 .history-main-container {
     flex-grow: 1;
     padding: 0 40px;
-    padding-top: 30px;
+    padding-top: 25px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     min-height: 0;
 }
 
+.tabs-container {
+    min-height: 50px;
+    max-height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: color-mix(in srgb, var(--bg-body), white 6%);
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.tabs-container::-webkit-scrollbar {
+    height: 5px;
+}
+
+.company-tab {
+    padding: 0 15px;
+    cursor: pointer;
+    border-bottom: 1px transparent solid;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.company-tab:not(.active-tab):hover {    
+    border-color: var(--text-color);
+}
+
+.active-tab {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
 .history-content {
-    height: 100%;
+    height: calc(100% - 50px);
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 375px 1fr;
 }
 
 .device-list-container, .date-list-container {
@@ -34,11 +69,11 @@
     width: 5px;
 }
 
-.device-list-container::-webkit-scrollbar-track, .date-list-container::-webkit-scrollbar-track {
+.device-list-container::-webkit-scrollbar-track, .date-list-container::-webkit-scrollbar-track, .tabs-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.device-list-container::-webkit-scrollbar-thumb, .date-list-container::-webkit-scrollbar-thumb {
+.device-list-container::-webkit-scrollbar-thumb, .date-list-container::-webkit-scrollbar-thumb, .tabs-container::-webkit-scrollbar-thumb {
     background-color: color-mix(in srgb, var(--bg-body), white 30%);
     border-radius: 10px;
 }

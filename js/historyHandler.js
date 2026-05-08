@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         `).join('');
                     } else {
-                        historyContainer.innerHTML = 'No removal history recorded for this device.';
+                        historyContainer.innerHTML = 'No removal history recorded for ' + name.toUpperCase() + '.';
                     }
                 }
             } catch (error) {

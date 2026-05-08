@@ -11,6 +11,17 @@ if (!isset($_SESSION['username'])) {
 }
 
 $currentPage = basename($_SERVER['PHP_SELF']);
+
+$companyList = [];
+foreach ($devices as $item) {
+    $parts = explode(':', $item['name']);
+    $group = trim($parts[0]);
+
+    if ($group && !in_array($group, $companyList)) {
+        $companyList[] = $group;
+    }
+}
+sort($companyList);
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +37,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php include 'navPanel.php' ?>
     
     <div class="history-main-container">
+        <div class="tabs-container">
+            <div class="company-tab active-tab" data-company="all">All</div>
+            <?php foreach ($companyList as $group): ?>
+                <div class="company-tab" data-company="<?php echo strtolower($group); ?>">
+                    <?php echo $group; ?> 
+                </div>
+            <?php endforeach; ?>
+        </div>
         <div class="history-content">
             <div class="device-list-container">
                 <?php foreach ($devices as $index => $item): ?>
                 <div class="device"
-                data-name="<?php echo trim(strtolower($item['name'])) ?>"
+                data-name="<?php echo trim(strtolower(str_replace(':', ' ', $item['name']))) ?>"
                 data-ip="<?php echo trim(strtolower($item['ip'])) ?>">
-                    <span class="device-main"><?php echo $item['name'] ?></span>
+                    <span class="device-main"><?php echo str_replace(':', ' ', $item['name']) ?> (<?php echo trim(str_replace('192.168', '', $item['ip'])) ?>)</span>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -45,5 +64,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     
     <script src="js/userHeartbeat.js"></script>
     <script src="js/historyHandler.js"></script>
+    <script src="js/historyTabs.js"></script>
 </body>
 </html>
