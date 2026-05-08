@@ -5,10 +5,10 @@ switch($currentPage) {
         $pageTitle = "Dashboard";
         break;
     case 'history.php':
-        $pageTitle = "History";
+        $pageTitle = "Logs History";
         break;
     case 'editList.php':
-        $pageTitle = "Edit Devices";
+        $pageTitle = "Edit Device List";
         break;
 }
 ?>
