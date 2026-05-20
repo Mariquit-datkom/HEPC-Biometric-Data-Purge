@@ -51,5 +51,6 @@ header("Pragma: no-cache");
             </div>          
         </form>
     </div>
+    <script src="js/openManual.js"></script>
 </body>
 </html>
