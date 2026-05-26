@@ -52,7 +52,7 @@
     width: 100%;
     flex-grow: 1;
     overflow-y: auto;
-    border: 2px var(--accent-color) solid;
+    border: 4px var(--accent-color) solid;
     border-bottom: none;
     padding: 15px;
     background-color: var(--bg-body);
